@@ -16,3 +16,9 @@ end
 get '/new_tweet' do
   erb :new_tweet
 end
+
+post '/new_tweet' do
+  tweet_content = params[:tweet_content]
+  tweet = Twitter.update(tweet_content)
+  tweet.class == Twitter::Tweet ? "Success!" : "Something went wrong..."
+end
